@@ -2,7 +2,7 @@ package grupoS.estacionamiento;
 
 import grupoS.usuario.Usuario;
 
-public class Estacionamiento {
+public abstract class Estacionamiento {
 	 	private Boolean estaVigente = true;
 	    private Usuario usuario;
 
