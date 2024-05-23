@@ -1,4 +1,4 @@
-package AppIspector;
+package AppInspector;
 
 public class AppInspector {
 
