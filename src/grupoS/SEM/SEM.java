@@ -1,4 +1,5 @@
-package SEM;
+package grupoS.SEM;
+
 import java.time.*;
 import java.util.*;
 

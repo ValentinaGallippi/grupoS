@@ -1,6 +1,6 @@
-package AppConductor;
+package grupoS.AppConductor;
 
-import SEM.SEM;
+
 import Usuario.Usuario;
 import java.time.LocalTime;
 
