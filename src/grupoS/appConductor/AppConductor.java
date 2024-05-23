@@ -2,6 +2,9 @@ package grupoS.appConductor;
 
 import java.time.LocalTime;
 
+import grupoS.SEM.SEM;
+import grupoS.usuario.Usuario;
+
 public class AppConductor {
 	
 	private SEM sem;

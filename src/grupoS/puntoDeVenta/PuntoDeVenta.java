@@ -2,6 +2,9 @@ package grupoS.puntoDeVenta;
 
 import java.time.LocalDate;
 
+import grupoS.SEM.SEM;
+import grupoS.usuario.Usuario;
+
 public class PuntoDeVenta {
     
     private SEM sem;
