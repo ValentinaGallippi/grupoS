@@ -2,6 +2,8 @@ package grupoS.Estacionamiento;
 
 import java.time.LocalTime;
 
+import grupoS.usuario.Usuario;
+
 public class EstacionamientoPuntual extends Estacionamiento{
     
     private int cantidadDeHoras;
