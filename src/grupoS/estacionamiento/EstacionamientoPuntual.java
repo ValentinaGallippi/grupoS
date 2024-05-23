@@ -1,4 +1,4 @@
-package grupoS.Estacionamiento;
+package grupoS.estacionamiento;
 
 import java.time.LocalTime;
 

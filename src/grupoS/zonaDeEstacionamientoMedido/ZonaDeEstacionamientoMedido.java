@@ -1,4 +1,4 @@
-package grupoS.ZonaDeEstacionamientoMedido;
+package grupoS.zonaDeEstacionamientoMedido;
 
 public class ZonaDeEstacionamientoMedido {
 

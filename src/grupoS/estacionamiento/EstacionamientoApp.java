@@ -1,4 +1,4 @@
-package grupoS.Estacionamiento;
+package grupoS.estacionamiento;
 
 public class EstacionamientoApp extends Estacionamiento{
 
