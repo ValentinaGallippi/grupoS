@@ -1,6 +1,9 @@
 package grupoS.SEM;
 
-import grupoS.*;
+import grupoS.compra.Compra;
+import grupoS.estacionamiento.Estacionamiento;
+import grupoS.zonaDeEstacionamientoMedido.ZonaDeEstacionamientoMedido;
+
 import java.time.*;
 import java.util.*;
 
@@ -46,6 +49,7 @@ public class SEM {
         // estacionamientos, es una lista que hace referencia, a los estacionamientos que estan vigentes 
         // ese dia en ese momento¡?
         if (this.horaDeCierre == LocalTime.now()) {
+        	
             this.estacionamientos.clear();
         }
     }
@@ -69,22 +73,41 @@ public class SEM {
     public double getPrecioPorHora() {
        return this.precioPorHora;
     }
-
+    
+    // revisar 
     public boolean estaVigente(String patente) {
-        Estacionamiento estacionamientoaVerSiEstaVigente = null;
-        for (Estacionamiento estacionamiento : this.estacionamientos) {
-            if (estacionamiento.getPatente() == patente) {
-                estacionamientoaVerSiEstaVigente = estacionamiento;
-            }
-        }
-        return estacionamientoaVerSiEstaVigente.estaVigente();
+    		Optional<Estacionamiento> estacionamiento = this.estacionamientos.stream()
+    										  .filter(e -> e.getPatente().equals(patente))
+    										  .findFirst();
+        	return estacionamiento.isPresent();
     }
 
     public void realizarInfraccion(String patente) {
         //Precondición la patente dada debe tener un estacionamiento no vigente- no valido.
         
         this.registrarInfraccion(infraccion));
-        ;
     }
+
+	public Estacionamiento buscarEstacionamiento(int celular) {
+		 Optional<Estacionamiento> estacionamiento1 = estacionamientos.stream()
+				 									  .filter(estacionamiento -> estacionamiento.getCelular() == celular)
+				 									  .findFirst();
+		 if(estacionamiento1.isPresent()) {
+			 return estacionamiento1.get();
+		 } else {
+			 System.out.println("ERROR: Estacionamiento no encontrado");
+		 }
+	}
+
+	public void cobrarEstacionamientoApp(double duracionEnHoras , int celular) {
+			Double saldoActual = creditosDisponibles.get(celular);
+			if (saldoActual != null) {
+				double nuevoSaldo = saldoActual - (duracionEnHoras / this.getPrecioPorHora());
+				creditosDisponibles.put(celular, nuevoSaldo);
+			} else {
+				System.out.println("ERROR: Celular no registrado");
+			}
+	}
+	
 
 }
