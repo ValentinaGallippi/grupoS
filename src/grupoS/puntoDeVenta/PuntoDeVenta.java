@@ -1,8 +1,11 @@
 package grupoS.puntoDeVenta;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import grupoS.SEM.SEM;
+import grupoS.compra.CompraRecargaCredito;
+import grupoS.estacionamiento.EstacionamientoPuntual;
 import grupoS.usuario.Usuario;
 
 public class PuntoDeVenta {
@@ -20,6 +23,7 @@ public class PuntoDeVenta {
 
     public void cargarCredito(Usuario usuario, double monto) {
         this.sem.registrarCreditoDisponible(usuario.getCelular(), monto);
-        CompraPuntual compra = new CompraPuntual(0, this, LocalDate.now(), LocalTime.now());
+        CompraRecargaCredito compra = new CompraRecargaCredito(0, this, LocalDate.now(), LocalTime.now());
         this.sem.registrarCompra(compra);;
     }
+}

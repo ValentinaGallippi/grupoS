@@ -1,22 +1,41 @@
 package grupoS.estacionamiento;
 
-import grupoS.usuario.Usuario;
+import java.time.LocalTime;
 
 public abstract class Estacionamiento {
-	 	private Boolean estaVigente = true;
-	    private Usuario usuario;
+	    private int celular;
+	    private String patente;	
 
-	    public Estacionamiento( Usuario usuario) {
-	        this.usuario = usuario;
+	    public Estacionamiento(int celular, String patente) {
+	        this.celular= celular;
+	        this.patente = patente;
 	    }
 
-	    public String getPatente() {
-	        return this.usuario.getPatente();
-	    }
+	    public int getCelular() {
+			return celular;
+		}
 
-	    public boolean estaVigente() {
-	        return this.estaVigente;
-	    }
 
+
+		public void setCelular(int celular) {
+			this.celular = celular;
+		}
+
+
+
+		public String getPatente() {
+			return patente;
+		}
+
+
+
+		public void setPatente(String patente) {
+			this.patente = patente;
+		}
+
+		public LocalTime horaDeInicio() {
+			return null;
+			
+		}
 	}
 
