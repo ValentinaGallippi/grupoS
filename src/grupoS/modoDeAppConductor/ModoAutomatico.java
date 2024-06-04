@@ -1,5 +1,5 @@
 package grupoS.modoDeAppConductor;
 
-public class ModoAutomatico {
+public class ModoAutomatico implements ModoDeAppConductor {
 
 }
