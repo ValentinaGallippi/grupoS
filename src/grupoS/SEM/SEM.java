@@ -73,21 +73,20 @@ public class SEM {
        return this.precioPorHora;
     }
     
-    public boolean estaVigente(String patente) {
+    public boolean estaVigente(String patente) throws Exception {
     		Optional<Estacionamiento> estacionamiento = this.estacionamientos.stream()
     										  .filter(e -> e.getPatente().equals(patente))
     										  .findFirst();
         	if (estacionamiento.isPresent()) {
         		return estacionamiento.get().estaVigente();
         	} else {
-        		System.out.println("ERROR: Estacionamiento no encontrado");
+        		throw new Exception("ERROR: Estacionamiento no encontrado para patente " + patente);
         	}
     }
 
     public void realizarInfraccion(String patente) {
-        //Precondición la patente dada debe tener un estacionamiento no vigente- no valido.
-        
-        this.registrarInfraccion(infraccion));
+       
+        this.registrarInfraccion());
     }
 
 	public Estacionamiento buscarEstacionamiento(int celular) {
@@ -97,7 +96,7 @@ public class SEM {
 		 if(estacionamiento1.isPresent()) {
 			 return estacionamiento1.get();
 		 } else {
-			 System.out.println("ERROR: Estacionamiento no encontrado");
+			 throw new Exception("ERROR: Estacionamiento no encontrado para el celular " + celular);
 		 }
 	}
 
@@ -107,7 +106,7 @@ public class SEM {
 				double nuevoSaldo = saldoActual - (duracionEnHoras / this.getPrecioPorHora());
 				creditosDisponibles.put(celular, nuevoSaldo);
 			} else {
-				System.out.println("ERROR: Celular no registrado");
+				throw new Exception("ERROR: Celular no encontrado para el numero " + celular);
 			}
 	}
 	
