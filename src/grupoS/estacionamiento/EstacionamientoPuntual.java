@@ -1,15 +1,13 @@
 package grupoS.estacionamiento;
 
-import java.time.LocalTime;
-
-import grupoS.usuario.Usuario;
+import grupoS.compra.Compra;
 
 public class EstacionamientoPuntual extends Estacionamiento{
     
     private int cantidadDeHoras;
 
-    public EstacionamientoPuntual(Usuario usuario, int cantidadDeHoras) {
-        super(usuario);
+    public EstacionamientoPuntual(int celular, String patente, int cantidadDeHoras) {
+        super(celular, patente);
         this.cantidadDeHoras = cantidadDeHoras;
     }
 }

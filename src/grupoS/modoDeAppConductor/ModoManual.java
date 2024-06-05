@@ -38,5 +38,8 @@ public class ModoManual implements ModoDeAppConductor {
 						+  "Costo: $" + (duracionEnHoras / app.precioPorHora() ) );
 		
 	}
+	
+
+	// cambiar estado
 
 }

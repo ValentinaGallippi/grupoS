@@ -7,7 +7,7 @@ import grupoS.SEM.SEM;
 import grupoS.estacionamiento.Estacionamiento;
 import grupoS.modoDeAppConductor.ModoDeAppConductor;
 import grupoS.modoDeAppConductor.ModoManual;
-import grupoS.usuario.Usuario;
+
 
 public class AppConductor {
 	
