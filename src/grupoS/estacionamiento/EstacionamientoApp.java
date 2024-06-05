@@ -14,7 +14,6 @@ public class EstacionamientoApp extends Estacionamiento{
         this.estaVigente = true;
     }
     
-    @Override
     public LocalTime horaDeInicio() {
     	return this.horaDeInicio;
     }
@@ -22,7 +21,7 @@ public class EstacionamientoApp extends Estacionamiento{
 	@Override
 	public boolean estaVigente() {
 	
-		return this.estaVigente;
+		return this.estaVigente();
 	}
 	
 	public void estacionamientoFinalizado() {

@@ -49,11 +49,10 @@ public class SEM {
         // estacionamientos, es una lista que hace referencia, a los estacionamientos que estan vigentes 
         // ese dia en ese momento¡?
         if (this.horaDeCierre == LocalTime.now()) {
-        	
             this.estacionamientos.clear();
         }
     }
-
+    
     public void suscribirEntidad(Entidad entidad) {
         this.entidades.add(entidad);
     }
@@ -74,12 +73,15 @@ public class SEM {
        return this.precioPorHora;
     }
     
-    // revisar 
     public boolean estaVigente(String patente) {
     		Optional<Estacionamiento> estacionamiento = this.estacionamientos.stream()
     										  .filter(e -> e.getPatente().equals(patente))
     										  .findFirst();
-        	return estacionamiento.isPresent();
+        	if (estacionamiento.isPresent()) {
+        		return estacionamiento.get().estaVigente();
+        	} else {
+        		System.out.println("ERROR: Estacionamiento no encontrado");
+        	}
     }
 
     public void realizarInfraccion(String patente) {

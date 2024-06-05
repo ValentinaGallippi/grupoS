@@ -8,4 +8,9 @@ public class EstacionamientoPuntual extends Estacionamiento{
         super(celular, patente);
         this.cantidadDeHoras = cantidadDeHoras;
     }
+    
+    @Override
+    public boolean estaVigente() {
+    	return 
+    }
 }

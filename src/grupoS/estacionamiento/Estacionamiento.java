@@ -15,29 +15,18 @@ public abstract class Estacionamiento {
 			return celular;
 		}
 
-
-
 		public void setCelular(int celular) {
 			this.celular = celular;
 		}
-
-
 
 		public String getPatente() {
 			return patente;
 		}
 
-
-
 		public void setPatente(String patente) {
 			this.patente = patente;
 		}
 
-		public LocalTime horaDeInicio() {
-			return null;
-			
-		}
-
-		public abstract boolean estaVigente(Estacionamiento estacionamiento);
+		public abstract boolean estaVigente();
 	}
 
