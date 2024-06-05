@@ -1,7 +1,5 @@
 package grupoS.estacionamiento;
 
-import grupoS.compra.Compra;
-
 public class EstacionamientoPuntual extends Estacionamiento{
     
     private int cantidadDeHoras;

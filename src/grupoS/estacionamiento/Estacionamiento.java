@@ -37,5 +37,7 @@ public abstract class Estacionamiento {
 			return null;
 			
 		}
+
+		public abstract boolean estaVigente(Estacionamiento estacionamiento);
 	}
 

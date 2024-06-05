@@ -20,13 +20,13 @@ public class EstacionamientoApp extends Estacionamiento{
     }
 
 	@Override
-	public boolean estaVigente(Estacionamiento unEstacionamiento) {
+	public boolean estaVigente() {
 	
 		return this.estaVigente;
 	}
-	public void estacionamientoFinalizado(boolean unBooleano) {
-		
-		this.estaVigente = unBooleano;
+	
+	public void estacionamientoFinalizado() {
+		this.estaVigente = false;
 	}
     
 	
