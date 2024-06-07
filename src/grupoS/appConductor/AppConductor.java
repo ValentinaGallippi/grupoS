@@ -8,6 +8,7 @@ import grupoS.SEM.SEM;
 import grupoS.estacionamiento.Estacionamiento;
 import grupoS.estado.Driving;
 import grupoS.estado.Estado;
+import grupoS.estado.Walking;
 import grupoS.modoDeAppConductor.ModoDeAppConductor;
 import grupoS.modoDeAppConductor.ModoManual;
 
@@ -127,12 +128,12 @@ public class AppConductor implements MovementSensor {
 		this.modoDeAsistencia.cambiarModoDeApp(modo,this);
 	}
 
-	public void cambiarEstado(Estado estado) {
-		this.estado = estado;
-		
-	}
-
 	public Asistencia getModoAsistencia() {
 		return this.modoDeAsistencia;
+	}
+
+	public void cambiarModoACaminando() {
+		this.estado = new Walking();
+		
 	}
 }

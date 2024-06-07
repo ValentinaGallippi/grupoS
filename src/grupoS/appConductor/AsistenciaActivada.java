@@ -13,6 +13,14 @@ public class AsistenciaActivada implements Asistencia {
 	public void cambiarModoDeApp(ModoDeAppConductor modo, AppConductor appConductor) {
 		appConductor.setModoDeApp(modo);
 	}
+
+	@Override
+	public void recibirAlertaManejando(AppConductor app) {
+		app.getModoDeApp().notificarFinEstacionamiento(app);
+	
+		
+		
+	}
 	
 
 }

@@ -8,4 +8,6 @@ public interface Asistencia {
 
 	void cambiarModoDeApp(ModoDeAppConductor modo, AppConductor appConductor) throws Exception;
 
+	void recibirAlertaManejando(AppConductor app);
+
 }

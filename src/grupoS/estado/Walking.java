@@ -8,7 +8,7 @@ public class Walking implements Estado {
 	public void manejando(AppConductor app) {
 		if(app.tieneEstacionamientoVigenteEnMismoPuntoGeografico()){
 	        app.cambiarModoACaminando();
-	        app.getModoAsistencia().recibirAlertaManejando();
+	        app.getModoAsistencia().recibirAlertaManejando(app);
 	        }
 	}
 

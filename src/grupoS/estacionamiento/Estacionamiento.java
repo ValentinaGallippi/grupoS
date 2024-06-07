@@ -5,10 +5,12 @@ import java.time.LocalTime;
 public abstract class Estacionamiento {
 	    private int celular;
 	    private String patente;	
+	    private LocalTime horaDeInicio;
 
 	    public Estacionamiento(int celular, String patente) {
 	        this.celular= celular;
 	        this.patente = patente;
+	        this.horaDeInicio = horaDeInicio;
 	    }
 
 	    public int getCelular() {
@@ -28,5 +30,9 @@ public abstract class Estacionamiento {
 		}
 
 		public abstract boolean estaVigente();
-	}
 
+		public LocalTime horaDeInicio() {
+		
+			return this.horaDeInicio;
+	}
+}

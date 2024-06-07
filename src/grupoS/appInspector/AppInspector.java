@@ -10,11 +10,11 @@ public class AppInspector {
         this.sem = sem;
     }
 
-    public boolean consultarVigenciaDeEstacionamiento(String patente) {
+    public boolean consultarVigenciaDeEstacionamiento(String patente) throws Exception {
         return this.sem.estaVigente(patente);
     }
 
-    public void realizarInfraccion(String patente) {
+    public void realizarInfraccion(String patente) throws Exception {
         if (this.consultarVigenciaDeEstacionamiento(patente) == false) {
             this.sem.realizarInfraccion(patente);
         }

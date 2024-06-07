@@ -9,8 +9,4 @@ public class EstacionamientoPuntual extends Estacionamiento{
         this.cantidadDeHoras = cantidadDeHoras;
     }
     
-    @Override
-    public boolean estaVigente() {
-    	return 
-    }
 }
