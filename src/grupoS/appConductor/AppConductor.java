@@ -3,23 +3,29 @@ package grupoS.appConductor;
 import java.time.LocalTime;
 import java.util.Optional;
 
+import grupoS.MovementSensor.MovementSensor;
 import grupoS.SEM.SEM;
 import grupoS.estacionamiento.Estacionamiento;
+import grupoS.estado.Driving;
+import grupoS.estado.Estado;
 import grupoS.modoDeAppConductor.ModoDeAppConductor;
 import grupoS.modoDeAppConductor.ModoManual;
 
 
-public class AppConductor {
+public class AppConductor implements MovementSensor {
 	
 	private SEM sem;
     private int celular;
     private ModoDeAppConductor modoDeApp;    
+    private Asistencia modoDeAsistencia;
+    private Estado     estado;
     
     public AppConductor(int celular, SEM sem) {
     	this.celular = celular;
     	this.sem = sem;
-    	this.modoDeApp = new ModoManual();   // por default una aplicacion se inicia en modo manual
-}
+    	this.modoDeApp = new ModoManual(); // por default una aplicacion se inicia en modo manual
+    	this.modoDeAsistencia = new AsistenciaDesactivada(); // y con la asistencia desactivada
+    }
 
  // usamos el strategy
     public void iniciarEstacionamiento(String patente) { 
@@ -95,6 +101,38 @@ public class AppConductor {
 	public void finalizarEnElSem(Estacionamiento estacionamiento) {
 		this.sem.terminarEstacionamiento(estacionamiento);
 	}
+	
+	
+	@Override
+	public void walking() {
+		this.estado.caminando(this);
+	}
+	
+	@Override
+	public void driving() {
+		this.estado.manejando(this);
+	}
+	
+	
+	public void cambiarAsistencia(Asistencia asistencia) throws Exception {
+		this.modoDeApp.cambiarAsistencia(asistencia, this);
+	}
 
+	public void setAsistencia(Asistencia asistencia) {
+		this.modoDeAsistencia = asistencia;
+		
+	}
+	
+	public void cambiarModoDeApp(ModoDeAppConductor modo) throws Exception {
+		this.modoDeAsistencia.cambiarModoDeApp(modo,this);
+	}
 
+	public void cambiarEstado(Estado estado) {
+		this.estado = estado;
+		
+	}
+
+	public Asistencia getModoAsistencia() {
+		return this.modoDeAsistencia;
+	}
 }
