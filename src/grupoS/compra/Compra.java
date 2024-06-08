@@ -19,5 +19,38 @@ public class Compra {
         this.horaDeInicio = horaDeInicio;
     }
 
+	public int getNumeroDeControl() {
+		return numeroDeControl;
+	}
+
+	public void setNumeroDeControl(int numeroDeControl) {
+		this.numeroDeControl = numeroDeControl;
+	}
+
+	public PuntoDeVenta getPuntoDeVenta() {
+		return puntoDeVenta;
+	}
+
+	public void setPuntoDeVenta(PuntoDeVenta puntoDeVenta) {
+		this.puntoDeVenta = puntoDeVenta;
+	}
+
+	public LocalDate getFechaDeInicio() {
+		return fechaDeInicio;
+	}
+
+	public void setFechaDeInicio(LocalDate fechaDeInicio) {
+		this.fechaDeInicio = fechaDeInicio;
+	}
+
+	public LocalTime getHoraDeInicio() {
+		return horaDeInicio;
+	}
+
+	public void setHoraDeInicio(LocalTime horaDeInicio) {
+		this.horaDeInicio = horaDeInicio;
+	}
+    
+
 }
 

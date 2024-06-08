@@ -37,6 +37,14 @@ public class PuntoDeVenta {
         this.sem.actualizarTicketsEmitidos();
         
     }
+
+	public SEM getSem() {
+		return sem;
+	}
+
+	public void setSem(SEM sem) {
+		this.sem = sem;
+	}
     
     
 }

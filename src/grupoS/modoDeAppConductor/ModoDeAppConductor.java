@@ -22,7 +22,7 @@ public abstract class ModoDeAppConductor {
         }
     }
 	
-	public void finalizarEstacionamiento(AppConductor app) {
+	public void finalizarEstacionamiento(AppConductor app) throws Exception {
 		Estacionamiento estacionamiento = app.buscarEstacionamientoApp(); 
 		LocalTime inicio = estacionamiento.horaDeInicio();
 		LocalTime fin    = LocalTime.now(); 
@@ -40,7 +40,7 @@ public abstract class ModoDeAppConductor {
 	
 	public abstract void cambiarAsistencia(Asistencia asistencia, AppConductor app) throws Exception;
 	public abstract boolean esModoAutomatico();
-	public abstract void notificarFinEstacionamiento(AppConductor app);
+	public abstract void notificarFinEstacionamiento(AppConductor app) throws Exception;
 	public abstract void notificarInicioEstacionamiento(AppConductor app);
 }
 

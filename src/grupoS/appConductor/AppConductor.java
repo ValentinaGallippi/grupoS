@@ -1,7 +1,7 @@
 package grupoS.appConductor;
 
 import java.time.LocalTime;
-import java.util.Optional;
+
 
 import grupoS.MovementSensor.MovementSensor;
 import grupoS.SEM.SEM;
@@ -108,12 +108,12 @@ public class AppConductor implements MovementSensor {
 	
 	
 	@Override
-	public void walking() {
+	public void walking() throws Exception {
 		this.estado.caminando(this);
 	}
 	
 	@Override
-	public void driving() {
+	public void driving() throws Exception {
 		this.estado.manejando(this);
 	}
 	

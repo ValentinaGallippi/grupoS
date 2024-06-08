@@ -22,7 +22,6 @@ public class Inspector {
 	public void setZona(ZonaDeEstacionamientoMedido zona) {
 		this.zona = zona;
 	}
-
 	 
 	 
 	 

@@ -31,6 +31,25 @@ public abstract class Estacionamiento {
 		
 			return this.horaDeInicio;
 	}
+		
+		public LocalTime getHoraDeInicio() {
+			return horaDeInicio;
+		}
+
+
+		public void setHoraDeInicio(LocalTime horaDeInicio) {
+			this.horaDeInicio = horaDeInicio;
+		}
+
+
+		public LocalTime getHoraDeFin() {
+			return horaDeFin;
+		}
+
+
+		public void setHoraDeFin(LocalTime horaDeFin) {
+			this.horaDeFin = horaDeFin;
+		}
 
 
 		public abstract boolean esDeApp();
