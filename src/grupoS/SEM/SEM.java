@@ -4,6 +4,7 @@ import grupoS.compra.Compra;
 import grupoS.entidad.Entidad;
 import grupoS.estacionamiento.Estacionamiento;
 import grupoS.estacionamiento.EstacionamientoApp;
+import grupoS.infraccion.Infraccion;
 import grupoS.zonaDeEstacionamientoMedido.ZonaDeEstacionamientoMedido;
 
 import java.time.*;
@@ -78,13 +79,7 @@ public class SEM {
        return this.precioPorHora;
     }
     
-
-    public void realizarInfraccion(String patente) {
-       
-        this.registrarInfraccion());
-    }
-
-	public Estacionamiento buscarEstacionamientoApp(int celular) {
+	public Estacionamiento buscarEstacionamientoApp(int celular) throws Exception {
 		 Stream<Estacionamiento> estacionamientoStream = estacionamientos.stream()
 				 									  .filter(estacionamiento -> estacionamiento.esDeApp());
 		Optional<Estacionamiento> estacionamiento1 	= estacionamientoStream
@@ -97,7 +92,7 @@ public class SEM {
 		 }
 	}
 
-	public void cobrarEstacionamientoApp(double duracionEnHoras , int celular) {
+	public void cobrarEstacionamientoApp(double duracionEnHoras , int celular) throws Exception {
 			Double saldoActual = creditosDisponibles.get(celular);
 			if (saldoActual != null) {
 				double nuevoSaldo = saldoActual - (duracionEnHoras / this.getPrecioPorHora());
@@ -109,6 +104,7 @@ public class SEM {
 
 	public boolean elPuntoEstaIncluidoEnZonas(Object ubicacionActual) {
 		// no se implementa el testeo geométrico de inclusión.;
+		return false;
 	}
 	
 	public int getTicketsEmitidos() {
@@ -127,4 +123,15 @@ public class SEM {
 		this.entidadesObservadoras.stream().forEach( e -> e.update());
 		}
 
+	public boolean estaVigente(String patente) {
+		Optional<Estacionamiento> estacionamiento1 	= estacionamientos.stream().sorted(Collections.reverseOrder())
+				.filter(estacionamiento -> estacionamiento.getPatente() == patente).findFirst();
+				if (estacionamiento1.isPresent()) {
+					return estacionamiento1.get().estaVigente();
+				} else { return false;
+				
+				}
+	
+	}
 }
+

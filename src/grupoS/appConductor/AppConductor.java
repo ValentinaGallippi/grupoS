@@ -89,11 +89,11 @@ public class AppConductor implements MovementSensor {
 		}
 	}
 
-	public Estacionamiento buscarEstacionamientoApp() {
+	public Estacionamiento buscarEstacionamientoApp() throws Exception {
 		return this.sem.buscarEstacionamientoApp(this.celular);
 	}
 
-	public void cobrarPorHoras(double duracionEnHoras) {
+	public void cobrarPorHoras(double duracionEnHoras) throws Exception {
 		this.sem.cobrarEstacionamientoApp(duracionEnHoras, this.celular);
 		
 	}
@@ -140,7 +140,7 @@ public class AppConductor implements MovementSensor {
 		
 	}
 
-	public boolean tieneEstacionamientoVigenteEnMismoPuntoGeografico() {
+	public boolean tieneEstacionamientoVigenteEnMismoPuntoGeografico() throws Exception {
 		Estacionamiento estacionamiento = this.sem.buscarEstacionamientoApp(celular);
 		return this.sem.elPuntoEstaIncluidoEnZonas(this.ubicacionActual()) && estacionamiento.estaVigente();
 	}
