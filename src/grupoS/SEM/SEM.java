@@ -19,7 +19,9 @@ public class SEM {
     private List<Estacionamiento> estacionamientos      = new ArrayList<>();
     private List<Infraccion> infracciones               = new ArrayList<>();
     private List<Entidad> entidades                     = new ArrayList<>();
-    private HashMap<Integer,Double> creditosDisponibles = new HashMap<>();
+    private HashMap<Integer, Double> creditosDisponibles = new HashMap<>();
+    private int ticketsEmitidos 						= 0;
+	
 
     public SEM(LocalTime horaDeInicio, LocalTime horaDeCierre, double precioPorHora){
         this.horaDeInicio = horaDeInicio;
@@ -108,5 +110,16 @@ public class SEM {
 		// no se implementa el testeo geométrico de inclusión.;
 	}
 	
+	public int getTicketsEmitidos() {
+		
+		return this.ticketsEmitidos;
+		
+	}
+
+	public void actualizarTicketsEmitidos() {
+		
+		this.ticketsEmitidos += 1;
+		
+	}
 
 }

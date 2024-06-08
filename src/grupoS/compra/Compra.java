@@ -12,7 +12,7 @@ public class Compra {
     private LocalDate fechaDeInicio;
     private LocalTime horaDeInicio;
 
-    public Compra(int numero, PuntoDeVenta puntoDeVenta, LocalDate fechaDeInicio, LocalTime horaDeInicio) {
+    public Compra(int numeroDeControl, PuntoDeVenta puntoDeVenta, LocalDate fechaDeInicio, LocalTime horaDeInicio) {
         this.numeroDeControl = numeroDeControl;
         this.puntoDeVenta = puntoDeVenta;
         this.fechaDeInicio = fechaDeInicio;

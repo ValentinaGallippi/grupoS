@@ -9,9 +9,9 @@ public class CompraEstacionamiento extends Compra {
 	
 	private int cantidadDeHoras;
 
-	public CompraEstacionamiento(int numero, PuntoDeVenta puntoDeVenta, LocalDate fechaDeInicio,
+	public CompraEstacionamiento(int numeroDeControl, PuntoDeVenta puntoDeVenta, LocalDate fechaDeInicio,
 			LocalTime horaDeInicio, int cantidadDeHoras) {
-		super(numero, puntoDeVenta, fechaDeInicio, horaDeInicio);
+		super(numeroDeControl, puntoDeVenta, fechaDeInicio, horaDeInicio);
 		this.cantidadDeHoras = cantidadDeHoras;
 		
 	}

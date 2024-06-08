@@ -21,18 +21,21 @@ public class PuntoDeVenta {
         this.sem = sem;
     }
 
-    public void realizarEstacionamiento(int celular, String patente, int cantidadDeHoras) {
-        EstacionamientoPuntual estacionamiento = new EstacionamientoPuntual(celular, patente , cantidadDeHoras);
-        this.sem.registrarEstacionamiento(estacionamiento);
-        CompraEstacionamiento compraEstacionamiento = new CompraEstacionamiento(celular, this, LocalDate.now(), LocalTime.now(), cantidadDeHoras);
+    public void realizarEstacionamiento(String patente, int cantidadDeHoras) {
+     
+        CompraEstacionamiento compraEstacionamiento = new CompraEstacionamiento(this.sem.getTicketsEmitidos(), this, LocalDate.now(), LocalTime.now(), cantidadDeHoras);
         this.sem.registrarCompra(compraEstacionamiento);
-        
+        EstacionamientoPuntual estacionamiento = new EstacionamientoPuntual(patente, LocalTime.now(), LocalTime.now().plusHours(cantidadDeHoras), compraEstacionamiento, cantidadDeHoras);
+        this.sem.actualizarTicketsEmitidos();
+        this.sem.registrarEstacionamiento(estacionamiento);
     }
 
     public void cargarCredito(int celular, double monto) {
         this.sem.registrarCreditoDisponible(celular, monto);
-        CompraRecargaCredito compraRecargaCredito = new CompraRecargaCredito(celular, this, LocalDate.now(), LocalTime.now());
+        CompraRecargaCredito compraRecargaCredito = new CompraRecargaCredito(this.sem.getTicketsEmitidos(), this, LocalDate.now(), LocalTime.now());
         this.sem.registrarCompra(compraRecargaCredito);
+        this.sem.actualizarTicketsEmitidos();
+        
     }
     
     
