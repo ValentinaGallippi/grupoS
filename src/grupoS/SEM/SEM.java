@@ -1,6 +1,7 @@
 package grupoS.SEM;
 
 import grupoS.compra.Compra;
+import grupoS.entidad.Entidad;
 import grupoS.estacionamiento.Estacionamiento;
 import grupoS.estacionamiento.EstacionamientoApp;
 import grupoS.zonaDeEstacionamientoMedido.ZonaDeEstacionamientoMedido;
@@ -18,7 +19,7 @@ public class SEM {
     private List<Compra> compras                        = new ArrayList<>();
     private List<Estacionamiento> estacionamientos      = new ArrayList<>();
     private List<Infraccion> infracciones               = new ArrayList<>();
-    private List<Entidad> entidades                     = new ArrayList<>();
+    private List<Entidad> entidadesObservadoras         = new ArrayList<>();
     private HashMap<Integer, Double> creditosDisponibles = new HashMap<>();
     private int ticketsEmitidos 						= 0;
 	
@@ -58,11 +59,11 @@ public class SEM {
     }
     
     public void suscribirEntidad(Entidad entidad) {
-        this.entidades.add(entidad);
+        this.entidadesObservadoras.add(entidad);
     }
 
     public void desuscribirEntidad(Entidad entidad) {
-        this.entidades.remove(entidad);
+        this.entidadesObservadoras.remove(entidad);
     }
 
     public void terminarEstacionamiento(Estacionamiento estacionamiento) {
@@ -121,5 +122,9 @@ public class SEM {
 		this.ticketsEmitidos += 1;
 		
 	}
+	public void notificarEntidades() {
+		
+		this.entidadesObservadoras.stream().forEach( e -> e.update());
+		}
 
 }
