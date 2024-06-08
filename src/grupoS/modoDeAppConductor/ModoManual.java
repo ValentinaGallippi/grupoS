@@ -1,13 +1,7 @@
 package grupoS.modoDeAppConductor;
 
-import java.time.Duration;
-import java.time.LocalTime;
-import java.util.Optional;
-
 import grupoS.appConductor.AppConductor;
-import grupoS.appConductor.Asistencia;
-import grupoS.estacionamiento.Estacionamiento;
-import grupoS.estacionamiento.EstacionamientoApp;
+import grupoS.asistencia.Asistencia;
 
 
 public class ModoManual extends ModoDeAppConductor {
@@ -28,6 +22,11 @@ public class ModoManual extends ModoDeAppConductor {
 		
 		System.out.println("No olvide finalizar su estacionamiento");
 		
+	}
+
+	@Override
+	public void notificarInicioEstacionamiento(AppConductor app) {
+		System.out.println("No olvide iniciar su estacionamiento");
 	}
 
 }

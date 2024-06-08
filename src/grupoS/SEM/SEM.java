@@ -103,6 +103,10 @@ public class SEM {
 				throw new Exception("ERROR: Celular no encontrado para el numero " + celular);
 			}
 	}
+
+	public boolean elPuntoEstaIncluidoEnZonas(Object ubicacionActual) {
+		// no se implementa el testeo geométrico de inclusión.;
+	}
 	
 
 }

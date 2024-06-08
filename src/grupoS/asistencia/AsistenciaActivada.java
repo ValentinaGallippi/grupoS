@@ -1,5 +1,6 @@
-package grupoS.appConductor;
+package grupoS.asistencia;
 
+import grupoS.appConductor.AppConductor;
 import grupoS.modoDeAppConductor.ModoDeAppConductor;
 
 public class AsistenciaActivada implements Asistencia {
@@ -17,9 +18,11 @@ public class AsistenciaActivada implements Asistencia {
 	@Override
 	public void recibirAlertaManejando(AppConductor app) {
 		app.getModoDeApp().notificarFinEstacionamiento(app);
-	
-		
-		
+	}
+
+	@Override
+	public void recibirAlertaCaminando(AppConductor app) {
+		app.getModoDeApp().notificarInicioEstacionamiento(app);
 	}
 	
 

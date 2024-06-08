@@ -1,5 +1,6 @@
-package grupoS.appConductor;
+package grupoS.asistencia;
 
+import grupoS.appConductor.AppConductor;
 import grupoS.modoDeAppConductor.ModoDeAppConductor;
 
 public class AsistenciaDesactivada implements Asistencia{
@@ -16,6 +17,18 @@ public class AsistenciaDesactivada implements Asistencia{
 		} else {
 			appConductor.setModoDeApp(modo);
 		}
+		
+	}
+
+	@Override
+	public void recibirAlertaManejando(AppConductor app) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void recibirAlertaCaminando(AppConductor app) {
+		// TODO Auto-generated method stub
 		
 	}
 	

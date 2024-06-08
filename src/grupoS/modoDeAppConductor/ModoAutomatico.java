@@ -1,7 +1,7 @@
 package grupoS.modoDeAppConductor;
 
 import grupoS.appConductor.AppConductor;
-import grupoS.appConductor.Asistencia;
+import grupoS.asistencia.Asistencia;
 
 public class ModoAutomatico extends ModoDeAppConductor {
 	
@@ -28,6 +28,12 @@ public class ModoAutomatico extends ModoDeAppConductor {
 		this.finalizarEstacionamiento(app);
 		
 		
+	}
+
+	@Override
+	public void notificarInicioEstacionamiento(AppConductor app) {
+		System.out.println("Inicio de Estacionamiento");
+		this.iniciarEstacionamiento(app, app.getPatente());
 	}
 
 }

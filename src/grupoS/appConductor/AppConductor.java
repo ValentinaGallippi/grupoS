@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import grupoS.MovementSensor.MovementSensor;
 import grupoS.SEM.SEM;
+import grupoS.asistencia.Asistencia;
+import grupoS.asistencia.AsistenciaDesactivada;
 import grupoS.estacionamiento.Estacionamiento;
 import grupoS.estado.Driving;
 import grupoS.estado.Estado;
@@ -20,6 +22,7 @@ public class AppConductor implements MovementSensor {
     private ModoDeAppConductor modoDeApp;    
     private Asistencia modoDeAsistencia;
     private Estado     estado;
+    private String patente;
     
     public AppConductor(int celular, SEM sem) {
     	this.celular = celular;
@@ -29,9 +32,9 @@ public class AppConductor implements MovementSensor {
     }
 
  // usamos el strategy
-    public void iniciarEstacionamiento(String patente) { 
+    public void iniciarEstacionamiento(String patente) {
+    	this.patente = patente;
     	this.modoDeApp.iniciarEstacionamiento(this, patente);
-    	
     }
 
     public void finalizarEstacionamiento() {
@@ -135,5 +138,27 @@ public class AppConductor implements MovementSensor {
 	public void cambiarModoACaminando() {
 		this.estado = new Walking();
 		
+	}
+
+	public boolean tieneEstacionamientoVigenteEnMismoPuntoGeografico() {
+		Estacionamiento estacionamiento = this.sem.buscarEstacionamientoApp(celular);
+		return this.sem.elPuntoEstaIncluidoEnZonas(this.ubicacionActual()) && estacionamiento.estaVigente();
+	}
+
+	private Object ubicacionActual() {
+		// no implementamos la generación del punto, solo lo utilizamos en los test de mock.
+		return null;
+	}
+
+	public void cambiarModoAManejando() {
+		this.estado = new Driving();
+	}
+
+	public String getPatente() {
+		return patente;
+	}
+
+	public void setPatente(String patente) {
+		this.patente = patente;
 	}
 }

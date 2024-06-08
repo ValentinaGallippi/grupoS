@@ -3,7 +3,7 @@ import java.time.Duration;
 import java.time.LocalTime;
 
 import grupoS.appConductor.AppConductor;
-import grupoS.appConductor.Asistencia;
+import grupoS.asistencia.Asistencia;
 import grupoS.estacionamiento.Estacionamiento;
 import grupoS.estacionamiento.EstacionamientoApp;
 
@@ -22,7 +22,7 @@ public abstract class ModoDeAppConductor {
         }
     }
 	
-	public void finalizarEstacionamiento(AppConductor app, int celular) {
+	public void finalizarEstacionamiento(AppConductor app) {
 		Estacionamiento estacionamiento = app.buscarEstacionamientoApp(); 
 		LocalTime inicio = estacionamiento.horaDeInicio();
 		LocalTime fin    = LocalTime.now(); 
@@ -40,7 +40,8 @@ public abstract class ModoDeAppConductor {
 	
 	public abstract void cambiarAsistencia(Asistencia asistencia, AppConductor app) throws Exception;
 	public abstract boolean esModoAutomatico();
-	public abstract void notificarFinEstacionamiento(AppConductor app); 
+	public abstract void notificarFinEstacionamiento(AppConductor app);
+	public abstract void notificarInicioEstacionamiento(AppConductor app);
 }
 
 
