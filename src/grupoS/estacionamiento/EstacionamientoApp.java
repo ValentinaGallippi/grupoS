@@ -6,22 +6,25 @@ import java.time.LocalTime;
 public class EstacionamientoApp extends Estacionamiento{
 
     
-    private boolean estaVigente;
+    private int celular;
 
-    public EstacionamientoApp(int celular, String patente, LocalTime horaDeInicio) {
-        super(celular,patente, horaDeInicio);
+    public EstacionamientoApp(int celular, String patente, LocalTime horaDeInicio, LocalTime horaDeFin) {
+        super(horaDeInicio,horaDeFin,patente);
+        this.celular = celular;
     }
 
+	public int getCelular() {
+		return celular;
+	}
+
+	public void setCelular(int celular) {
+		this.celular = celular;
+	}
 
 	@Override
-	public boolean estaVigente() {
-	
-		return this.estaVigente();
+	public boolean esDeApp() {
+		return true;
 	}
-	
-	public void estacionamientoFinalizado() {
-		this.estaVigente = false;
-	}
-    
+  
 	
 }

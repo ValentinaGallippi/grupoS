@@ -3,23 +3,17 @@ package grupoS.estacionamiento;
 import java.time.LocalTime;
 
 public abstract class Estacionamiento {
-	    private int celular;
 	    private String patente;	
 	    private LocalTime horaDeInicio;
+	    private LocalTime horaDeFin; // en el caso de estacionamiento por app es la hora maxima de alcance por saldo o las 20hs. 
 
-	    public Estacionamiento(int celular, String patente) {
-	        this.celular= celular;
-	        this.patente = patente;
+	    public Estacionamiento(LocalTime horaDeInicio, LocalTime horaDeFin, String patente) {
+	    	this.patente = patente;
 	        this.horaDeInicio = horaDeInicio;
+	        this.horaDeFin = horaDeFin;
+	        
 	    }
 
-	    public int getCelular() {
-			return celular;
-		}
-
-		public void setCelular(int celular) {
-			this.celular = celular;
-		}
 
 		public String getPatente() {
 			return patente;
@@ -29,10 +23,19 @@ public abstract class Estacionamiento {
 			this.patente = patente;
 		}
 
-		public abstract boolean estaVigente();
+		public  boolean estaVigente() {
+			return this.horaDeFin.isBefore(LocalTime.now());
+		}
 
 		public LocalTime horaDeInicio() {
 		
 			return this.horaDeInicio;
 	}
+
+
+		public abstract boolean esDeApp();
+
+
+		public abstract int getCelular();
+
 }

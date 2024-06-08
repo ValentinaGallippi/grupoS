@@ -2,10 +2,12 @@ package grupoS.SEM;
 
 import grupoS.compra.Compra;
 import grupoS.estacionamiento.Estacionamiento;
+import grupoS.estacionamiento.EstacionamientoApp;
 import grupoS.zonaDeEstacionamientoMedido.ZonaDeEstacionamientoMedido;
 
 import java.time.*;
 import java.util.*;
+import java.util.stream.Stream;
 
 public class SEM {
 
@@ -73,26 +75,18 @@ public class SEM {
        return this.precioPorHora;
     }
     
-    public boolean estaVigente(String patente) throws Exception {
-    		Optional<Estacionamiento> estacionamiento = this.estacionamientos.stream()
-    										  .filter(e -> e.getPatente().equals(patente))
-    										  .findFirst();
-        	if (estacionamiento.isPresent()) {
-        		return estacionamiento.get().estaVigente();
-        	} else {
-        		throw new Exception("ERROR: Estacionamiento no encontrado para patente " + patente);
-        	}
-    }
 
     public void realizarInfraccion(String patente) {
        
         this.registrarInfraccion());
     }
 
-	public Estacionamiento buscarEstacionamiento(int celular) {
-		 Optional<Estacionamiento> estacionamiento1 = estacionamientos.stream()
-				 									  .filter(estacionamiento -> estacionamiento.getCelular() == celular)
-				 									  .findFirst();
+	public Estacionamiento buscarEstacionamientoApp(int celular) {
+		 Stream<Estacionamiento> estacionamientoStream = estacionamientos.stream()
+				 									  .filter(estacionamiento -> estacionamiento.esDeApp());
+		Optional<Estacionamiento> estacionamiento1 	= estacionamientoStream
+													.filter(estacionamiento -> estacionamiento.getCelular() == celular)
+													.findFirst();
 		 if(estacionamiento1.isPresent()) {
 			 return estacionamiento1.get();
 		 } else {

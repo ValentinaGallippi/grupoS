@@ -86,8 +86,8 @@ public class AppConductor implements MovementSensor {
 		}
 	}
 
-	public Estacionamiento buscarEstacionamiento() {
-		return this.sem.buscarEstacionamiento(this.celular);
+	public Estacionamiento buscarEstacionamientoApp() {
+		return this.sem.buscarEstacionamientoApp(this.celular);
 	}
 
 	public void cobrarPorHoras(double duracionEnHoras) {
