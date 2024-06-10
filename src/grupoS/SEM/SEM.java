@@ -4,6 +4,7 @@ import grupoS.compra.Compra;
 import grupoS.entidad.Entidad;
 import grupoS.estacionamiento.Estacionamiento;
 import grupoS.infraccion.Infraccion;
+import grupoS.inspector.Inspector;
 import grupoS.zonaDeEstacionamientoMedido.ZonaDeEstacionamientoMedido;
 
 import java.time.*;
@@ -169,6 +170,11 @@ public class SEM {
 	
 	public void notificarEntidades() {
 		this.entidadesObservadoras.stream().forEach( e -> e.update());
+	}
+	
+	public ZonaDeEstacionamientoMedido getZonaDeInspector(Inspector inspector) {
+		Optional<ZonaDeEstacionamientoMedido> zona = this.getZonas().stream().filter(z -> z.getInspector() == inspector).findFirst();
+		return zona.orElse(null);
 	}
 }
 
