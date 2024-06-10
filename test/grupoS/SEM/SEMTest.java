@@ -1,6 +1,5 @@
 package grupoS.SEM;
 
-public class SEMTest {
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
