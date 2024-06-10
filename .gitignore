@@ -1,1 +1,5 @@
 /bin/
+#eclipse core
+.proyect
+#jdt-specific (eclipse java development tools)
+.classpath
