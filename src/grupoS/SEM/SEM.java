@@ -51,13 +51,7 @@ public class SEM {
         this.infracciones.add(infraccion);
     }
 
-    public void finalizarEstacionamientosEnCurso() {
-        // estacionamientos, es una lista que hace referencia, a los estacionamientos que estan vigentes 
-        // ese dia en ese momento¡?
-        if (this.horaDeCierre == LocalTime.now()) {
-            this.estacionamientos.clear();
-        }
-    }
+
     
     public void suscribirEntidad(Entidad entidad) {
         this.entidadesObservadoras.add(entidad);
