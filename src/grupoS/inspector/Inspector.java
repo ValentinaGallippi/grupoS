@@ -10,9 +10,5 @@ public class Inspector {
 	public int getLegajo() {
 		return legajo;
 	}
-	
-	public void setLegajo(int legajo) {
-		this.legajo = legajo;
-	}
 
 }
