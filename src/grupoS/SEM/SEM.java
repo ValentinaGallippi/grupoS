@@ -3,7 +3,6 @@ package grupoS.SEM;
 import grupoS.compra.Compra;
 import grupoS.entidad.Entidad;
 import grupoS.estacionamiento.Estacionamiento;
-import grupoS.estacionamiento.EstacionamientoApp;
 import grupoS.infraccion.Infraccion;
 import grupoS.zonaDeEstacionamientoMedido.ZonaDeEstacionamientoMedido;
 
@@ -85,14 +84,6 @@ public class SEM {
     
 	public void setPrecioPorHora(double precioPorHora) {
 		this.precioPorHora = precioPorHora;
-	}
-	
-	public void setZonas(List<ZonaDeEstacionamientoMedido> zonas) {
-		this.zonas = zonas; DUDA
-	}
-	
-	public void setEstacionamientos(List<Estacionamiento> estacionamientos) {
-		this.estacionamientos = estacionamientos; DUDA
 	}
 	
     // REGISTROS
