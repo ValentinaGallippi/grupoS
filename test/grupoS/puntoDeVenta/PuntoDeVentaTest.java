@@ -4,12 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 
 import grupoS.SEM.SEM;
+import grupoS.compra.Compra;
+import grupoS.estacionamiento.Estacionamiento;
 
 class PuntoDeVentaTest {
 	private PuntoDeVenta pdv;
@@ -17,33 +18,37 @@ class PuntoDeVentaTest {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		pdv = new PuntoDeVenta(sem);
-		sem = mock(SEM.class);
-		when(sem.getTicketsEmitidos()).thenReturn(0);
+		this.sem = mock(SEM.class);
+		this.pdv = new PuntoDeVenta(sem);
+		
 	}
 
 	@Test
 	void cuandoSeIniciaUnEstacionamientoPuntual_EseEstacionamientoSeRegistraraEnElSEM() {
-		pdv.realizarEstacionamiento("AC 123 FP", 3);
+		this.pdv.realizarEstacionamiento("AC 123 FP", 3);
 		
-		verify(sem).actualizarTicketsEmitidos();
-		verify(sem).registrarCompra(null);
-		verify(sem).registrarEstacionamiento(null);
-	
-		
+		verify(this.sem).actualizarTicketsEmitidos();
+		ArgumentCaptor<Compra> estadoCaptor = ArgumentCaptor.forClass(Compra.class);
+		verify(this.sem, times(1)).registrarCompra(estadoCaptor.capture());
+        assertTrue(estadoCaptor.getValue() instanceof Compra, "Error test. No se obtuvo una instancia de compra en registrarCompra() del SEM");
+        ArgumentCaptor<Estacionamiento> estadoCaptor2 = ArgumentCaptor.forClass(Estacionamiento.class);
+		verify(this.sem, times(1)).registrarEstacionamiento(estadoCaptor2.capture());
+        assertTrue(estadoCaptor2.getValue() instanceof Estacionamiento, "Error test. No se obtuvo una instancia de estacionamiento en registrarEstacionamiento() del SEM");
 	}
 	
 	@Test
 	void cuandoSeHaceUnaCargaDeCreditoEnUnPuntoDeVenta_SeRegistraEsaCompraEnElSEM() {
 		pdv.cargarCredito(1154887656, 1500);
 		
-		
-		
 		verify(sem).registrarCreditoDisponible(1154887656, 1500);
 		verify(sem).actualizarTicketsEmitidos();
-		verify(sem).registrarCompra(null);
-		
+		ArgumentCaptor<Compra> estadoCaptor = ArgumentCaptor.forClass(Compra.class);
+		verify(this.sem, times(1)).registrarCompra(estadoCaptor.capture());
+        assertTrue(estadoCaptor.getValue() instanceof Compra, "Error test. No se obtuvo una instancia de compra en registrarCompra() del SEM");
 	}
 	
-
+	@Test
+	void cuandoUnPuntoDeVentaSeCreaConUnSem_EseSemSeraElQueEstaraConectadoAEsePuntoDeVenta() {
+		assertEquals(this.pdv.getSem(),sem);
+	}
 }

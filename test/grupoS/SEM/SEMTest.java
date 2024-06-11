@@ -2,8 +2,6 @@ package grupoS.SEM;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-
 import java.time.LocalTime;
 
 import org.junit.jupiter.api.BeforeEach;
