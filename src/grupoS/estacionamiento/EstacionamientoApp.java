@@ -17,10 +17,6 @@ public class EstacionamientoApp extends Estacionamiento{
 		return celular;
 	}
 
-	public void setCelular(int celular) {
-		this.celular = celular;
-	}
-
 	@Override
 	public boolean esDeApp() {
 		return true;

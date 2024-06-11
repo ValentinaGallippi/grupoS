@@ -20,16 +20,8 @@ public class EstacionamientoPuntual extends Estacionamiento{
 		return cantidadDeHoras;
 	}
 
-	public void setCantidadDeHoras(int cantidadDeHoras) {
-		this.cantidadDeHoras = cantidadDeHoras;
-	}
-
 	public CompraEstacionamiento getTicket() {
 		return ticket;
-	}
-
-	public void setTicket(CompraEstacionamiento ticket) {
-		this.ticket = ticket;
 	}
 
 	@Override
