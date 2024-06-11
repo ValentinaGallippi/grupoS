@@ -3,6 +3,7 @@ package grupoS.SEM;
 import grupoS.compra.Compra;
 import grupoS.entidad.Entidad;
 import grupoS.estacionamiento.Estacionamiento;
+import grupoS.estacionamiento.EstacionamientoApp;
 import grupoS.infraccion.Infraccion;
 import grupoS.inspector.Inspector;
 import grupoS.zonaDeEstacionamientoMedido.ZonaDeEstacionamientoMedido;

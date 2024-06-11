@@ -10,7 +10,7 @@ public class EstacionamientoPuntual extends Estacionamiento{
     private CompraEstacionamiento ticket;
 
     public EstacionamientoPuntual(String patente, LocalTime horaDeInicio, LocalTime horaDeFin, CompraEstacionamiento ticket, int cantidadDeHoras) {
-        super(horaDeFin, horaDeInicio, patente);
+        super(horaDeInicio, horaDeFin, patente);
         this.cantidadDeHoras = cantidadDeHoras;
         this.ticket = ticket;
     }
@@ -29,11 +29,6 @@ public class EstacionamientoPuntual extends Estacionamiento{
 		return false;
 	}
 
-	@Override
-	public int getCelular() {
-		// ningun numero de celular va a ser 0
-		return 0;
-	}
 	
    
 }

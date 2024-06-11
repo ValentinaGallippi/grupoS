@@ -13,11 +13,12 @@ public class EstacionamientoApp extends Estacionamiento{
         this.celular = celular;
     }
 
+    @Override
 	public int getCelular() {
 		return celular;
 	}
 
-	@Override
+	
 	public boolean esDeApp() {
 		return true;
 	}
