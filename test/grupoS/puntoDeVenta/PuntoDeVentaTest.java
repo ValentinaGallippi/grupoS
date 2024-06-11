@@ -17,8 +17,8 @@ class PuntoDeVentaTest {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		pdv = new PuntoDeVenta(sem);
 		sem = mock(SEM.class);
+		pdv = new PuntoDeVenta(sem);
 		when(sem.getTicketsEmitidos()).thenReturn(0);
 	}
 
@@ -29,7 +29,6 @@ class PuntoDeVentaTest {
 		verify(sem).actualizarTicketsEmitidos();
 		verify(sem).registrarCompra(null);
 		verify(sem).registrarEstacionamiento(null);
-	
 		
 	}
 	
