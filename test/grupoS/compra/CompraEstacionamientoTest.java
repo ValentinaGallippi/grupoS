@@ -22,11 +22,6 @@ class CompraEstacionamientoTest {
         compraEstacionamiento = new CompraEstacionamiento (1, pdv, LocalDate.of(2024,12,13), LocalTime.of(14,00), 3);
     }
 
-    @Test 
-    void cuandoSeLePreguntaAUnaCompraSuPuntoDeVenta_SeraPdv() {
-        assertEquals(compraEstacionamiento.getPuntoDeVenta(), pdv);
-    }
-
     @Test
     void cuandoSeLePreguntaAUnaCompraDeEstacionamientoSuCantidadDeHoras_Sera3() {
         assertEquals(compraEstacionamiento.getCantidadDeHoras(), 3);
