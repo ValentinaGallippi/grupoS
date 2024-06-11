@@ -20,8 +20,20 @@ public class Infraccion {
 		this.inspector = inspector;
 		this.zona = zona;
 	}
-	
-	
-	
 
+	public LocalDate getFecha() {
+		return fecha;
+	}
+
+	public LocalTime getHora() {
+		return hora;
+	}
+
+	public Inspector getInspector() {
+		return inspector;
+	}
+
+	public ZonaDeEstacionamientoMedido getZona() {
+		return zona;
+	}
 }
