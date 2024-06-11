@@ -12,10 +12,7 @@ public class AppInspector {
     private SEM sem;
     private Inspector inspector;
     
-
-
     public AppInspector(SEM sem, Inspector inspector) {
-		super();
 		this.sem = sem;
 		this.inspector = inspector;
 	}
@@ -26,7 +23,7 @@ public class AppInspector {
 
     public void realizarInfraccion(String patente) throws Exception {
         if (this.sem.estaVigente(patente)) {
-        	Infraccion infraccion = new Infraccion(LocalDate.now(), LocalTime.now(), this.inspector , this.inspector.getZonaDeEstacionamientoMedido());
+        	Infraccion infraccion = new Infraccion(LocalDate.now(), LocalTime.now(), this.inspector , this.sem.getZonaDeInspector(inspector));
         	this.sem.registrarInfraccion(infraccion);
         }
     }
