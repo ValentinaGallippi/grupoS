@@ -20,10 +20,6 @@ public class CompraEstacionamiento extends Compra {
 		return cantidadDeHoras;
 	}
 
-	public void setCantidadDeHoras(int cantidadDeHoras) {
-		this.cantidadDeHoras = cantidadDeHoras;
-	}
-	
 	
 
 }

@@ -18,14 +18,28 @@ class PuntoDeVentaTest {
 	
 	@BeforeEach
 	void setUp() throws Exception {
+
 		this.sem = mock(SEM.class);
 		this.pdv = new PuntoDeVenta(sem);
 		
+
+		sem = mock(SEM.class);
+		pdv = new PuntoDeVenta(sem);
+		when(sem.getTicketsEmitidos()).thenReturn(0);
+
 	}
 
 	@Test
 	void cuandoSeIniciaUnEstacionamientoPuntual_EseEstacionamientoSeRegistraraEnElSEM() {
+
 		this.pdv.realizarEstacionamiento("AC 123 FP", 3);
+
+		pdv.realizarEstacionamiento("AC 123 FP", 3);
+		
+		verify(sem).actualizarTicketsEmitidos();
+		verify(sem).registrarCompra(null);
+		verify(sem).registrarEstacionamiento(null);
+
 		
 		verify(this.sem).actualizarTicketsEmitidos();
 		ArgumentCaptor<Compra> estadoCaptor = ArgumentCaptor.forClass(Compra.class);

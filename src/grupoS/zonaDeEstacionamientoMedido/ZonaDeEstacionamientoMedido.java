@@ -27,4 +27,9 @@ public class ZonaDeEstacionamientoMedido {
 		this.puntosDeVenta.add(puntoDeVenta);
 	}
 
+	public List<PuntoDeVenta> getPuntosDeVenta() {
+		
+		return this.puntosDeVenta;
+	}
+
 }

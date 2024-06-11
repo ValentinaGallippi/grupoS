@@ -19,10 +19,6 @@ public abstract class Estacionamiento {
 			return patente;
 		}
 
-		public void setPatente(String patente) {
-			this.patente = patente;
-		}
-
 		public  boolean estaVigente() {
 			return this.horaDeFin.isBefore(LocalTime.now());
 		}
@@ -35,12 +31,6 @@ public abstract class Estacionamiento {
 		public LocalTime getHoraDeInicio() {
 			return horaDeInicio;
 		}
-
-
-		public void setHoraDeInicio(LocalTime horaDeInicio) {
-			this.horaDeInicio = horaDeInicio;
-		}
-
 
 		public LocalTime getHoraDeFin() {
 			return horaDeFin;
