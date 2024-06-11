@@ -10,7 +10,7 @@ public class Driving  implements Estado{
 	}
 
 	@Override
-	public void caminando(AppConductor appConductor) throws Exception {
+	public void caminando(AppConductor appConductor){
 		// TODO Auto-generated method stub
 		if (!appConductor.tieneEstacionamientoVigenteEnMismoPuntoGeografico()){ 
 			appConductor.cambiarModoACaminando();

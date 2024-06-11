@@ -32,7 +32,13 @@ class EstacionamientoAppTest {
     	assertTrue(estacionamientoApp.esDeApp());
 
     }
-
+    
+    @Test
+    void cuandoSeLeModificaLaHoraDeFinAUnEstacionamientoApp_LaNuevaHoraDeFinSera() {
+    	estacionamientoApp.setHoraDeFin(LocalTime.of(15,40));
+    	
+    	assertEquals(estacionamientoApp.getHoraDeFin(), LocalTime.of(15,40));
+    }
 
 
 

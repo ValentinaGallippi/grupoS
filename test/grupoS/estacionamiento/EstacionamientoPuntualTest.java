@@ -38,26 +38,21 @@ class EstacionamientoPuntualTest {
 
     @Test
     void cuandoSeLePreguntaAUnEstacionamientoSuHoraDeInicio_Sera1530() { 
-
         assertEquals(estacionamientoPuntual.getHoraDeInicio(), LocalTime.of(15,30));
     }
+    
     @Test
      void cuandoSeLePreguntaAUnEstacionamientoSuHoraDeFin_Sera1913() { 
-
         assertEquals(estacionamientoPuntual.getHoraDeFin(), LocalTime.of(19,13));
-
     }
-
 
     @Test 
     void cuandoSeLePreguntaAunEstacionamientoSiEstaVigente_DevuelveTrue() {
         assertTrue(estacionamientoPuntual.estaVigente());
-
     }
 
     @Test 
     void cuandoSeLePreguntaAUnEstacionamientoPorSuTicket_SeraTicket() {
     	assertEquals(estacionamientoPuntual.getTicket(), ticket);
-    	
     }
 }

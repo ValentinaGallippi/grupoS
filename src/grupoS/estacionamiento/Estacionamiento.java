@@ -22,11 +22,6 @@ public abstract class Estacionamiento {
 		public  boolean estaVigente() {
 			return this.horaDeFin.isBefore(LocalTime.now());
 		}
-
-		public LocalTime horaDeInicio() {
-		
-			return this.horaDeInicio;
-	}
 		
 		public LocalTime getHoraDeInicio() {
 			return horaDeInicio;

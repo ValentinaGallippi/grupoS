@@ -11,13 +11,10 @@ public class AsistenciaDesactivada implements Asistencia{
 	}
 
 	@Override
-	public void cambiarModoDeApp(ModoDeAppConductor modo, AppConductor appConductor) throws Exception {
-		if(modo.esModoAutomatico()) {
-			throw new Exception("ERROR: no se puede cambiar a modo automatico con la asistencia desactivada. Active la asistencia");
-		} else {
+	public void cambiarModoDeApp(ModoDeAppConductor modo, AppConductor appConductor){
+		if(!modo.esModoAutomatico()) {
 			appConductor.setModoDeApp(modo);
 		}
-		
 	}
 
 	@Override

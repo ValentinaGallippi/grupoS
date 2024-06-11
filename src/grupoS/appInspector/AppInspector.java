@@ -17,11 +17,11 @@ public class AppInspector {
 		this.inspector = inspector;
 	}
 
-	public boolean consultarVigenciaDeEstacionamiento(String patente) throws Exception {
+	public boolean consultarVigenciaDeEstacionamiento(String patente){
         return this.sem.estaVigente(patente);
     }
 
-    public void realizarInfraccion(String patente) throws Exception {
+    public void realizarInfraccion(String patente) {
         if (this.sem.estaVigente(patente)) {
         	Infraccion infraccion = new Infraccion(LocalDate.now(), LocalTime.now(), this.inspector , this.sem.getZonaDeInspector(inspector));
         	this.sem.registrarInfraccion(infraccion);

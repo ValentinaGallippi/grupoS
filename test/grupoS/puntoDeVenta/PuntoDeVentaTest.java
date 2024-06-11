@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -33,13 +35,6 @@ class PuntoDeVentaTest {
 	void cuandoSeIniciaUnEstacionamientoPuntual_EseEstacionamientoSeRegistraraEnElSEM() {
 
 		this.pdv.realizarEstacionamiento("AC 123 FP", 3);
-
-		pdv.realizarEstacionamiento("AC 123 FP", 3);
-		
-		verify(sem).actualizarTicketsEmitidos();
-		verify(sem).registrarCompra(null);
-		verify(sem).registrarEstacionamiento(null);
-
 		
 		verify(this.sem).actualizarTicketsEmitidos();
 		ArgumentCaptor<Compra> estadoCaptor = ArgumentCaptor.forClass(Compra.class);

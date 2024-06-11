@@ -4,8 +4,8 @@ import grupoS.appConductor.AppConductor;
 
 public interface Estado {
 
-	void manejando(AppConductor appConductor) throws Exception;
+	void manejando(AppConductor appConductor);
 
-	void caminando(AppConductor appConductor) throws Exception;
+	void caminando(AppConductor appConductor);
 
 }

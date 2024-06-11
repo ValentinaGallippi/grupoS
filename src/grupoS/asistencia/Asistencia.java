@@ -7,7 +7,7 @@ public interface Asistencia {
 
 	boolean esDesactivada();
 
-	void cambiarModoDeApp(ModoDeAppConductor modo, AppConductor appConductor) throws Exception;
+	void cambiarModoDeApp(ModoDeAppConductor modo, AppConductor appConductor);
 
 	void recibirAlertaManejando(AppConductor app);
 

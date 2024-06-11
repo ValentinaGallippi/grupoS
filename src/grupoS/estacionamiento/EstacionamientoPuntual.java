@@ -29,6 +29,13 @@ public class EstacionamientoPuntual extends Estacionamiento{
 		return false;
 	}
 
+
+	@Override
+	public int getCelular() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
    
 }

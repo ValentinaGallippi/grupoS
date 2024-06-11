@@ -125,17 +125,13 @@ public class SEM {
         return this.creditosDisponibles.get(celular);
     }
     
-	public Estacionamiento buscarEstacionamientoApp(int celular) throws Exception {
+	public Estacionamiento buscarEstacionamientoApp(int celular){
 		Stream<Estacionamiento> estacionamientoStream = estacionamientos.stream()
 				 									  .filter(estacionamiento -> estacionamiento.esDeApp());
 		Optional<Estacionamiento> estacionamiento1 	= estacionamientoStream
 													.filter(estacionamiento -> estacionamiento.getCelular() == celular)
 													.findFirst();
-		 if(estacionamiento1.isPresent()) {
-			 return estacionamiento1.get();
-		 } else {
-			 throw new Exception("ERROR: Estacionamiento no encontrado para el celular " + celular);
-		 }
+		return estacionamiento1.orElse(null);
 	}
 	
 	public boolean elPuntoEstaIncluidoEnZonas(Object ubicacionActual) {
@@ -155,13 +151,11 @@ public class SEM {
 	
 	// ACCIONES DE SEM
 
-	public void cobrarEstacionamientoApp(double duracionEnHoras , int celular) throws Exception {
+	public void cobrarEstacionamientoApp(double duracionEnHoras , int celular){
 		Double saldoActual = creditosDisponibles.get(celular);
 		if (saldoActual != null) {
 			double nuevoSaldo = saldoActual - (duracionEnHoras / this.getPrecioPorHora());
 			creditosDisponibles.put(celular, nuevoSaldo);
-		} else {
-			throw new Exception("ERROR: Celular no encontrado para el numero " + celular);
 		}
 	}
 

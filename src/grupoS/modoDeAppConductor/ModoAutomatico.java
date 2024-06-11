@@ -7,13 +7,10 @@ public class ModoAutomatico extends ModoDeAppConductor {
 	
 
 	@Override
-	public void cambiarAsistencia(Asistencia asistencia, AppConductor app)  throws Exception{
-		if (asistencia.esDesactivada()) {
-			throw new Exception("ERROR: no se puede desactivar la asistencia. Si desea desactivarla, cambie a manual");
-		} else {
+	public void cambiarAsistencia(Asistencia asistencia, AppConductor app){
+		if (!asistencia.esDesactivada()) {
 			app.setAsistencia(asistencia);
 		}
-		
 	}
 
 	@Override
@@ -22,12 +19,9 @@ public class ModoAutomatico extends ModoDeAppConductor {
 	}
 
 	@Override
-	public void notificarFinEstacionamiento(AppConductor app) throws Exception {
-		
+	public void notificarFinEstacionamiento(AppConductor app){
 		System.out.println("Estacionamiento finalizado");
 		this.finalizarEstacionamiento(app);
-		
-		
 	}
 
 	@Override
