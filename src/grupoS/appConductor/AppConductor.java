@@ -41,9 +41,7 @@ public class AppConductor implements MovementSensor {
     	this.modoDeApp.finalizarEstacionamiento(this);
     }
     
-    public void cambiarModo(ModoDeAppConductor modo) {
-    	this.modoDeApp = modo;
-    }
+  
     
     public double consultarSaldo() {
     	return this.sem.saldoDe(this.celular);
@@ -102,10 +100,7 @@ public class AppConductor implements MovementSensor {
 		return this.sem.getPrecioPorHora();
 	}
 
-	public void finalizarEnElSem(Estacionamiento estacionamiento) {
-		this.sem.terminarEstacionamiento(estacionamiento);
-	}
-	
+
 	
 	@Override
 	public void walking(){
