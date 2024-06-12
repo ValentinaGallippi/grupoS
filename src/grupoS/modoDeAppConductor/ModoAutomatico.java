@@ -5,6 +5,12 @@ import grupoS.asistencia.Asistencia;
 
 public class ModoAutomatico extends ModoDeAppConductor {
 	
+	
+
+	public ModoAutomatico() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void cambiarAsistencia(Asistencia asistencia, AppConductor app){
