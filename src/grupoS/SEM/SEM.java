@@ -154,7 +154,7 @@ public class SEM {
 	public void cobrarEstacionamientoApp(double duracionEnHoras , int celular){
 		Double saldoActual = creditosDisponibles.get(celular);
 		if (saldoActual != null) {
-			double nuevoSaldo = saldoActual - (duracionEnHoras / this.getPrecioPorHora());
+			double nuevoSaldo = saldoActual - (duracionEnHoras * this.getPrecioPorHora());
 			creditosDisponibles.put(celular, nuevoSaldo);
 		}
 	}

@@ -2,6 +2,8 @@ package grupoS.SEM;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import java.time.LocalTime;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -11,6 +13,7 @@ import grupoS.compra.Compra;
 import grupoS.entidad.Entidad;
 import grupoS.estacionamiento.Estacionamiento;
 import grupoS.infraccion.Infraccion;
+import grupoS.inspector.Inspector;
 import grupoS.puntoDeVenta.PuntoDeVenta;
 import grupoS.zonaDeEstacionamientoMedido.ZonaDeEstacionamientoMedido;
 
@@ -25,11 +28,13 @@ class SEMTest {
 	private Estacionamiento estacionamiento;
 	private Infraccion infraccion;
 	private Entidad entidad;
+	private Inspector inspector;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		
 		sem = new SEM(LocalTime.of(07, 00), LocalTime.of(20, 00), 40);
+		inspector = mock(Inspector.class);
 		zona = mock(ZonaDeEstacionamientoMedido.class);
 		pdv = mock(PuntoDeVenta.class);
 		compra = mock(Compra.class);
@@ -123,5 +128,36 @@ class SEMTest {
 
         assertEquals(sem.saldoDe(100), 1000);
     }
-	
+    
+    @Test
+    void cuandoSeRegistraUnSaldoDeUnCelularAUnSemRecienCreado_ElSEMLoGuardaraEnSusCreditosDisponibles() {
+        sem.registrarCreditoDisponible(100, 1000);
+
+        assertEquals(sem.getCreditosDisponibles().size(), 1);
+    }
+    
+    @Test
+    void cuandoSePreguntaPorLaZonaDeUnInspectorAlSEM_EsteLaBuscaraEntreSusZonasDeEstacionamientoMedido() {
+    	when(zona.getInspector()).thenReturn(inspector);
+    	sem.registrarZona(zona);
+    	
+    	assertEquals(sem.getZonaDeInspector(inspector), zona);
+    }
+    
+    @Test
+    void cuandoSeLePreguntaAUnSEMPorLaVigenciaDeUnEstacionaminto_EsteLoBuscaEntreSusEstacionamientos() {
+    	when(estacionamiento.getPatente()).thenReturn("12345g");
+    	when(estacionamiento.estaVigente()).thenReturn(true);
+    	sem.registrarEstacionamiento(estacionamiento);
+    	
+    	assertTrue(sem.estaVigente("12345g"));
+    }
+
+    @Test
+    void cuandoUnSEMLeCobraUnEstacionamientoAUnEstacionamientoApp_LeDescuentaElMontoQueGastoAlCreditoDisponibleQueTeniaRegistradoEnElSEM() {
+    	sem.registrarCreditoDisponible(100, 1000);
+    	sem.cobrarEstacionamientoApp(2, 100);
+    	
+    	assertEquals(sem.saldoDe(100), 920);
+    }
 }
