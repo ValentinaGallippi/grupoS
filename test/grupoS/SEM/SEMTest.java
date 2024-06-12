@@ -110,4 +110,18 @@ class SEMTest {
 		assertEquals(sem.getPrecioPorHora(), 400000);
 	}
 	
+	@Test
+    void cuandoSeActualizanLosTicketsEmitidos_LosTickectsSeIncrementanEnUno() {
+        sem.actualizarTicketsEmitidos();
+
+        assertEquals(sem.getTicketsEmitidos(),1);
+    }
+
+    @Test
+    void cuandoSeConsultaPorElSaldoDeUnCelular_ElSEMLosBuscaEnSusCreditosDisponibles() {
+        sem.registrarCreditoDisponible(100, 1000);
+
+        assertEquals(sem.saldoDe(100), 1000);
+    }
+	
 }
