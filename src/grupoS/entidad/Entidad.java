@@ -1,11 +1,9 @@
 package grupoS.entidad;
 
-public class Entidad {
+public interface Entidad {
 
 
-	public void update() {
-		
-	}
+	public void update();
 
 
 }
