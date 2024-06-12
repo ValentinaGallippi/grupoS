@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import grupoS.compra.Compra;
 import grupoS.entidad.Entidad;
 import grupoS.estacionamiento.Estacionamiento;
+import grupoS.estacionamiento.EstacionamientoApp;
 import grupoS.infraccion.Infraccion;
 import grupoS.inspector.Inspector;
 import grupoS.puntoDeVenta.PuntoDeVenta;
@@ -29,6 +30,7 @@ class SEMTest {
 	private Infraccion infraccion;
 	private Entidad entidad;
 	private Inspector inspector;
+	private EstacionamientoApp estacionamientoApp;
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -38,6 +40,7 @@ class SEMTest {
 		zona = mock(ZonaDeEstacionamientoMedido.class);
 		pdv = mock(PuntoDeVenta.class);
 		compra = mock(Compra.class);
+		estacionamientoApp = mock(EstacionamientoApp.class);
 		estacionamiento = mock(Estacionamiento.class);
 		entidad = mock(Entidad.class);
 	}
@@ -160,4 +163,13 @@ class SEMTest {
     	
     	assertEquals(sem.saldoDe(100), 920);
     }
+    
+    @Test
+    void cuandoSePreguntaPorUnEstacionamiento_ElSEMLoBuscaraEntreSusEstacionamientos() {
+    	when(estacionamientoApp.getCelular()).thenReturn(1234);
+    	sem.registrarEstacionamiento(estacionamientoApp);
+    	
+    	assertEquals(sem.buscarEstacionamientoApp(1234), null);
+    }
+    
 }
