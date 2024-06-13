@@ -1,5 +1,6 @@
 package grupoS.estado;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
@@ -53,5 +54,10 @@ class DrivingTest {
 		
 	}
 	
+	@Test
+    void manejando_NoDebeLanzarExcepciones() {
+        // Probamos que el método no lance excepciones cuando se llama
+        assertDoesNotThrow(() -> estado.manejando(app));
+    }
 
 }
