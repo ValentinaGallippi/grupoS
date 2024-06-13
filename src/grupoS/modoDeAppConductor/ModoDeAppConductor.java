@@ -14,7 +14,7 @@ public abstract class ModoDeAppConductor {
 	public void iniciarEstacionamiento(AppConductor app, String patente) {
         if(app.consultarSaldo() > 0) {
         	LocalTime horaMaxima =app.calcularHoraMaxima();
-            System.out.println("La hora de inicio es:" + LocalTime.now() + "La hora maxima es:" + horaMaxima);
+            System.out.println("La hora de inicio es:" + LocalTime.now().withSecond(0).withNano(0) + "La hora maxima es:" + horaMaxima);
             EstacionamientoApp estacionamiento = new EstacionamientoApp(app.getCelular(),patente , LocalTime.now(), horaMaxima);
             app.registrarEstacionamiento(estacionamiento);
         } else {
@@ -24,8 +24,8 @@ public abstract class ModoDeAppConductor {
 	
 	public void finalizarEstacionamiento(AppConductor app){
 		Estacionamiento estacionamiento = app.buscarEstacionamientoApp(); 
-		LocalTime inicio = estacionamiento.getHoraDeInicio();
-		LocalTime fin    = LocalTime.now(); 
+		LocalTime inicio = estacionamiento.getHoraDeInicio().withSecond(0).withNano(0);
+		LocalTime fin    = LocalTime.now().withSecond(0).withNano(0); 
 		Duration duracion = Duration.between(inicio, fin);
 		double duracionEnHoras = duracion.toMinutes() / 60.0;
 		// cobrarPorHoras le saca y luego actualiza el saldo al celular con el que esta relacionado el estacionamiento

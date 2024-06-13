@@ -38,7 +38,7 @@ class AppInspectorTest {
 	
 	@Test
 	void cuandoSeHaceUnaInfraccion_LaMismaSeRegistaEnElSEM() {
-		when(sem.estaVigente("123as")).thenReturn(true);
+		when(sem.estaVigente("123as")).thenReturn(false);
 		app.realizarInfraccion("123as");
 		
 		ArgumentCaptor<Infraccion> estadoCaptor = ArgumentCaptor.forClass(Infraccion.class);
@@ -46,8 +46,8 @@ class AppInspectorTest {
 	}
 
 	@Test
-    void realizarInfraccion_DebeRegistrarUnaInfraccionSiElEstacionamientoEstaVigente() {
-        when(sem.estaVigente("ABC123")).thenReturn(true);
+    void realizarInfraccion_DebeRegistrarUnaInfraccionSiElEstacionamientoNoEstaVigente() {
+        when(sem.estaVigente("ABC123")).thenReturn(false);
 
         app.realizarInfraccion("ABC123");
 
@@ -58,8 +58,8 @@ class AppInspectorTest {
     }
 
     @Test
-    void realizarInfraccion_NoDebeRegistrarUnaInfraccionSiElEstacionamientoNoEstaVigente() {
-        when(sem.estaVigente("ABC123")).thenReturn(false);
+    void realizarInfraccion_NoDebeRegistrarUnaInfraccionSiElEstacionamientoEstaVigente() {
+        when(sem.estaVigente("ABC123")).thenReturn(true);
 
         app.realizarInfraccion("ABC123");
 
