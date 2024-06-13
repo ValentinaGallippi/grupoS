@@ -2,6 +2,7 @@ package grupoS.SEM;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalTime;
@@ -170,6 +171,41 @@ class SEMTest {
     	sem.registrarEstacionamiento(estacionamientoApp);
     	
     	assertEquals(sem.buscarEstacionamientoApp(1234), null);
+    }
+    
+    @Test
+    void cuandoUnSEMNotificaATodasSusEntidadesInteresadasEnSerNotificadas_CadaEntidadHaceUnUpdate() {
+        sem.suscribirEntidad(entidad);
+        sem.notificarEntidades();
+
+        verify(entidad).update();;
+    }
+
+    @Test
+    void elPuntoEstaIncluidoEnZonas_DebeDevolverFalso() {
+        assertFalse(sem.elPuntoEstaIncluidoEnZonas(null));
+    }
+
+    @Test
+    void estaVigente_DebeDevolverTrueCuandoElEstacionamientoEstaVigente() {
+        when(estacionamiento.getPatente()).thenReturn("ABC123");
+        when(estacionamiento.estaVigente()).thenReturn(true);
+        sem.registrarEstacionamiento(estacionamiento);
+
+        assertTrue(sem.estaVigente("ABC123"));
+    }
+
+    @Test
+    void estaVigente_DebeDevolverFalseCuandoElEstacionamientoNoEstaVigente() {
+        when(estacionamiento.getPatente()).thenReturn("XYZ789");
+        when(estacionamiento.estaVigente()).thenReturn(false);
+
+        assertFalse(sem.estaVigente("XYZ789"));
+    }
+
+    @Test
+    void estaVigente_DebeDevolverFalseCuandoLaPatenteNoExiste() {
+        assertFalse(sem.estaVigente("PAT123"));
     }
     
 }
