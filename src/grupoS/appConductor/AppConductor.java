@@ -150,7 +150,7 @@ public class AppConductor implements MovementSensor {
 	}
 
 	public Estado getEstado() {
-		// TODO Auto-generated method stub
+
 		return this.estado;
 	}
 }

@@ -28,12 +28,12 @@ public abstract class ModoDeAppConductor {
 		LocalTime fin    = LocalTime.now(); 
 		Duration duracion = Duration.between(inicio, fin);
 		double duracionEnHoras = duracion.toMinutes() / 60.0;
-		// cobrarPorHoras le saca el saldo al celular con el q esta relacionado el estacionamiento
+		// cobrarPorHoras le saca y luego actualiza el saldo al celular con el que esta relacionado el estacionamiento
 		app.cobrarPorHoras(duracionEnHoras);
 		System.out.println("Hora de comienzo: " + inicio
 						+  "Hora de fin:" + fin
 						+  "Duracion total de horas: " + duracionEnHoras
-						+  "Costo: $" + (duracionEnHoras / app.precioPorHora() ) );
+						+  "Costo: $" + (duracionEnHoras * app.precioPorHora() ) );
 		
 	}
 	

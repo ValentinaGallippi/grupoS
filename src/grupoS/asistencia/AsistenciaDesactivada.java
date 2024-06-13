@@ -19,13 +19,13 @@ public class AsistenciaDesactivada implements Asistencia{
 
 	@Override
 	public void recibirAlertaManejando(AppConductor app) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void recibirAlertaCaminando(AppConductor app) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 	
