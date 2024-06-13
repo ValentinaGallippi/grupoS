@@ -41,8 +41,9 @@ class ModoDeAppConductorTest {
 
     @Test
     public void testFinalizarEstacionamiento() {
+    	when(app.precioPorHora()).thenReturn(40.0);
         when(app.buscarEstacionamientoApp()).thenReturn(estacionamiento);
-        when(estacionamiento.getHoraDeInicio()).thenReturn(LocalTime.of(15, 00));
+        when(estacionamiento.getHoraDeInicio()).thenReturn(LocalTime.of(9, 00));
 
         modoDeAppConductor.finalizarEstacionamiento(app);
 
