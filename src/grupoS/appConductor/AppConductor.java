@@ -34,7 +34,7 @@ public class AppConductor implements MovementSensor {
 
  // usamos el strategy
     public void iniciarEstacionamiento(String patente) {
-    	this.setPatente(patente);;
+    	this.setPatente(patente);
     	this.modoDeApp.iniciarEstacionamiento(this, patente);
     }
 
