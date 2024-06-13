@@ -1,16 +1,18 @@
 package grupoS.appInspector;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
 import grupoS.SEM.SEM;
-import grupoS.compra.Compra;
 import grupoS.infraccion.Infraccion;
 import grupoS.inspector.Inspector;
 
@@ -43,4 +45,25 @@ class AppInspectorTest {
         assertTrue(estadoCaptor.getValue() instanceof Infraccion, "Error test. No se obtuvo una instancia de Infraccion en registrarInfraccion() del SEM");
 	}
 
+	@Test
+    void realizarInfraccion_DebeRegistrarUnaInfraccionSiElEstacionamientoEstaVigente() {
+        when(sem.estaVigente("ABC123")).thenReturn(true);
+
+        app.realizarInfraccion("ABC123");
+
+        verify(sem).estaVigente("ABC123");
+        ArgumentCaptor<Infraccion> estadoCaptor = ArgumentCaptor.forClass(Infraccion.class);
+        verify(this.sem, times(1)).registrarInfraccion(estadoCaptor.capture());
+        assertTrue(estadoCaptor.getValue() instanceof Infraccion, "Error test. No se obtuvo una instancia de Infraccion en registrarInfraccion() del SEM");
+    }
+
+    @Test
+    void realizarInfraccion_NoDebeRegistrarUnaInfraccionSiElEstacionamientoNoEstaVigente() {
+        when(sem.estaVigente("ABC123")).thenReturn(false);
+
+        app.realizarInfraccion("ABC123");
+
+        verify(sem).estaVigente("ABC123");
+        verify(sem, never()).registrarInfraccion(any(Infraccion.class));
+    }
 }
