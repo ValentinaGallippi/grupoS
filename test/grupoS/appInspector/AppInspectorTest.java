@@ -38,11 +38,11 @@ class AppInspectorTest {
 	
 	@Test
 	void cuandoSeHaceUnaInfraccion_LaMismaSeRegistaEnElSEM() {
+		when(sem.estaVigente("123as")).thenReturn(true);
 		app.realizarInfraccion("123as");
 		
 		ArgumentCaptor<Infraccion> estadoCaptor = ArgumentCaptor.forClass(Infraccion.class);
-		verify(this.sem, times(1)).registrarInfraccion(estadoCaptor.capture());
-        assertTrue(estadoCaptor.getValue() instanceof Infraccion, "Error test. No se obtuvo una instancia de Infraccion en registrarInfraccion() del SEM");
+		verify(this.sem).registrarInfraccion(estadoCaptor.capture());
 	}
 
 	@Test
