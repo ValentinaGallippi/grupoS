@@ -43,6 +43,20 @@ class ModoAutomaticoTest {
 		
 	}
 	
+	@Test
+    void notificarFinEstacionamiento_DebeFinalizarElEstacionamiento() {
+		
+        modoAutomatico.notificarFinEstacionamiento(appConductor);
+        verify(appConductor).finalizarEstacionamiento();
+    }
+
+    @Test
+    void notificarInicioEstacionamiento_DebeIniciarElEstacionamientoConLaPatenteCorrecta() {
+        when(appConductor.getPatente()).thenReturn("ABC123");
+        modoAutomatico.notificarInicioEstacionamiento(appConductor);
+
+        verify(appConductor).iniciarEstacionamiento("ABC123");
+    }
 	
 
 }

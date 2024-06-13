@@ -27,16 +27,14 @@ public class ModoAutomatico extends ModoDeAppConductor {
 	@Override
 	public void notificarFinEstacionamiento(AppConductor app){
 		System.out.println("Estacionamiento finalizado");
-		this.finalizarEstacionamiento(app);
+		app.finalizarEstacionamiento();
 	}
 
 	@Override
 	public void notificarInicioEstacionamiento(AppConductor app) {
 		System.out.println("Inicio de Estacionamiento");
-		this.iniciarEstacionamiento(app, app.getPatente());
+		app.iniciarEstacionamiento(app.getPatente());
 	}
-
-
-	
-
 }
+
+

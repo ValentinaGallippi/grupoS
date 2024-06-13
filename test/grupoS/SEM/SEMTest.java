@@ -2,6 +2,7 @@ package grupoS.SEM;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalTime;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import grupoS.compra.Compra;
 import grupoS.entidad.Entidad;
 import grupoS.estacionamiento.Estacionamiento;
+import grupoS.estacionamiento.EstacionamientoApp;
 import grupoS.infraccion.Infraccion;
 import grupoS.inspector.Inspector;
 import grupoS.puntoDeVenta.PuntoDeVenta;
@@ -29,6 +31,7 @@ class SEMTest {
 	private Infraccion infraccion;
 	private Entidad entidad;
 	private Inspector inspector;
+	private EstacionamientoApp estacionamientoApp;
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -38,6 +41,7 @@ class SEMTest {
 		zona = mock(ZonaDeEstacionamientoMedido.class);
 		pdv = mock(PuntoDeVenta.class);
 		compra = mock(Compra.class);
+		estacionamientoApp = mock(EstacionamientoApp.class);
 		estacionamiento = mock(Estacionamiento.class);
 		entidad = mock(Entidad.class);
 	}
@@ -160,4 +164,48 @@ class SEMTest {
     	
     	assertEquals(sem.saldoDe(100), 920);
     }
+    
+    @Test
+    void cuandoSePreguntaPorUnEstacionamiento_ElSEMLoBuscaraEntreSusEstacionamientos() {
+    	when(estacionamientoApp.getCelular()).thenReturn(1234);
+    	sem.registrarEstacionamiento(estacionamientoApp);
+    	
+    	assertEquals(sem.buscarEstacionamientoApp(1234), null);
+    }
+    
+    @Test
+    void cuandoUnSEMNotificaATodasSusEntidadesInteresadasEnSerNotificadas_CadaEntidadHaceUnUpdate() {
+        sem.suscribirEntidad(entidad);
+        sem.notificarEntidades();
+
+        verify(entidad).update();;
+    }
+
+    @Test
+    void elPuntoEstaIncluidoEnZonas_DebeDevolverFalso() {
+        assertFalse(sem.elPuntoEstaIncluidoEnZonas(null));
+    }
+
+    @Test
+    void estaVigente_DebeDevolverTrueCuandoElEstacionamientoEstaVigente() {
+        when(estacionamiento.getPatente()).thenReturn("ABC123");
+        when(estacionamiento.estaVigente()).thenReturn(true);
+        sem.registrarEstacionamiento(estacionamiento);
+
+        assertTrue(sem.estaVigente("ABC123"));
+    }
+
+    @Test
+    void estaVigente_DebeDevolverFalseCuandoElEstacionamientoNoEstaVigente() {
+        when(estacionamiento.getPatente()).thenReturn("XYZ789");
+        when(estacionamiento.estaVigente()).thenReturn(false);
+
+        assertFalse(sem.estaVigente("XYZ789"));
+    }
+
+    @Test
+    void estaVigente_DebeDevolverFalseCuandoLaPatenteNoExiste() {
+        assertFalse(sem.estaVigente("PAT123"));
+    }
+    
 }
