@@ -29,11 +29,12 @@ public class AppConductor implements MovementSensor {
     	this.sem = sem;
     	this.modoDeApp = new ModoManual(); // por default una aplicacion se inicia en modo manual
     	this.modoDeAsistencia = new AsistenciaDesactivada(); // y con la asistencia desactivada
+    	this.estado = new Walking();//
     }
 
  // usamos el strategy
     public void iniciarEstacionamiento(String patente) {
-    	this.patente = patente;
+    	this.setPatente(patente);;
     	this.modoDeApp.iniciarEstacionamiento(this, patente);
     }
 
@@ -78,12 +79,12 @@ public class AppConductor implements MovementSensor {
 	}
 
 	public LocalTime calcularHoraMaxima() {
-		double cantidadDeHorasRestantes = this.consultarSaldo()/ 40;
+		double cantidadDeHorasRestantes = this.consultarSaldo()/ this.sem.getPrecioPorHora();
 		LocalTime ahora = LocalTime.now();
-		if (ahora.plusHours((long) cantidadDeHorasRestantes).isAfter(LocalTime.of(20, 0))){
-			return LocalTime.of(20, 00);
+		if (ahora.plusHours((long) cantidadDeHorasRestantes).isAfter(this.sem.getHoraDeCierre())){
+			return this.sem.getHoraDeCierre().withSecond(0).withNano(0);
 		} else {
-			return ahora.plusHours((long) cantidadDeHorasRestantes);
+			return ahora.plusHours((long) cantidadDeHorasRestantes).withSecond(0).withNano(0);
 		}
 	}
 
@@ -153,7 +154,12 @@ public class AppConductor implements MovementSensor {
 		return patente;
 	}
 
-	public void setPatente(String patente) {
+	private void setPatente(String patente) {
 		this.patente = patente;
+	}
+
+	public Estado getEstado() {
+		// TODO Auto-generated method stub
+		return this.estado;
 	}
 }

@@ -14,7 +14,6 @@ public class Walking implements Estado {
 
 	@Override
 	public void caminando(AppConductor appConductor) {
-		// TODO Auto-generated method stub
 		
 	}
 	
