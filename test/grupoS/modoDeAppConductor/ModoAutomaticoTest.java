@@ -45,8 +45,8 @@ class ModoAutomaticoTest {
 	
 	@Test
     void notificarFinEstacionamiento_DebeFinalizarElEstacionamiento() {
+		
         modoAutomatico.notificarFinEstacionamiento(appConductor);
-
         verify(appConductor).finalizarEstacionamiento();
     }
 
