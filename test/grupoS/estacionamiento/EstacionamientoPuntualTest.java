@@ -55,4 +55,10 @@ class EstacionamientoPuntualTest {
     void cuandoSeLePreguntaAUnEstacionamientoPorSuTicket_SeraTicket() {
     	assertEquals(estacionamientoPuntual.getTicket(), ticket);
     }
+    
+    @Test
+    void getCelular_DebeDevolverValorCorrecto() {
+        assertEquals(estacionamientoPuntual.getCelular(), 0);
+    }
+    
 }
