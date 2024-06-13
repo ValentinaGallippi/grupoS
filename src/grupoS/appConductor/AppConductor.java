@@ -74,7 +74,7 @@ public class AppConductor implements MovementSensor {
 
 	public LocalTime calcularHoraMaxima() {
 		double cantidadDeHorasRestantes = this.consultarSaldo()/ this.sem.getPrecioPorHora();
-		LocalTime ahora = LocalTime.now();
+		LocalTime ahora = LocalTime.now().withSecond(0).withNano(0);
 		if (ahora.plusHours((long) cantidadDeHorasRestantes).isAfter(this.sem.getHoraDeCierre())){
 			return this.sem.getHoraDeCierre().withSecond(0).withNano(0);
 		} else {

@@ -26,7 +26,7 @@ public abstract class ModoDeAppConductor {
 		Estacionamiento estacionamiento = app.buscarEstacionamientoApp(); 
 		LocalTime inicio = estacionamiento.getHoraDeInicio().withSecond(0).withNano(0);
 		LocalTime fin    = LocalTime.now().withSecond(0).withNano(0); 
-		Duration duracion = Duration.between(inicio, fin);
+		Duration duracion = Duration.between(fin, inicio);
 		double duracionEnHoras = duracion.toMinutes() / 60.0;
 		// cobrarPorHoras le saca y luego actualiza el saldo al celular con el que esta relacionado el estacionamiento
 		app.cobrarPorHoras(duracionEnHoras);

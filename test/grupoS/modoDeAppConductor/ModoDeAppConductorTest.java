@@ -22,8 +22,8 @@ class ModoDeAppConductorTest {
 
     @Test
     public void testIniciarEstacionamiento_SaldoSuficiente() {
-        when(app.consultarSaldo()).thenReturn(50.0);
-        when(app.calcularHoraMaxima()).thenReturn(LocalTime.now().plusHours(2));
+        when(app.consultarSaldo()).thenReturn(85.0);
+        when(app.calcularHoraMaxima()).thenReturn(LocalTime.of(19, 00));
 
         modoDeAppConductor.iniciarEstacionamiento(app, "ABC123");
 
@@ -42,7 +42,7 @@ class ModoDeAppConductorTest {
     @Test
     public void testFinalizarEstacionamiento() {
         when(app.buscarEstacionamientoApp()).thenReturn(estacionamiento);
-        when(estacionamiento.getHoraDeInicio()).thenReturn(LocalTime.now().minusHours(1));
+        when(estacionamiento.getHoraDeInicio()).thenReturn(LocalTime.of(15, 00));
 
         modoDeAppConductor.finalizarEstacionamiento(app);
 

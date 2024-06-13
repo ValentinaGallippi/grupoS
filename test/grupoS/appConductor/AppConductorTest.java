@@ -3,7 +3,6 @@ package grupoS.appConductor;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -11,14 +10,10 @@ import java.time.LocalTime;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
-
 import grupoS.SEM.SEM;
 import grupoS.asistencia.AsistenciaDesactivada;
-import grupoS.compra.Compra;
 import grupoS.estacionamiento.Estacionamiento;
 import grupoS.estado.Driving;
-import grupoS.estado.Estado;
 import grupoS.estado.Walking;
 import grupoS.modoDeAppConductor.ModoManual;
 
@@ -29,15 +24,13 @@ class AppConductorTest {
 	private SEM sem2;
 	private ModoManual modoManual;
 	private Estacionamiento estacionamiento;
-	private Estado estado;
-
+	
 	@BeforeEach
 	void setUp() throws Exception {
 		sem = mock(SEM.class);
 		sem2 = mock(SEM.class);
 		modoManual = mock(ModoManual.class);
 		app = new AppConductor(123456, sem);
-		estado = mock(Estado.class);
 		
 	}
 

@@ -16,7 +16,6 @@ import grupoS.estacionamiento.Estacionamiento;
 import grupoS.estacionamiento.EstacionamientoApp;
 import grupoS.infraccion.Infraccion;
 import grupoS.inspector.Inspector;
-import grupoS.puntoDeVenta.PuntoDeVenta;
 import grupoS.zonaDeEstacionamientoMedido.ZonaDeEstacionamientoMedido;
 
 
@@ -25,7 +24,6 @@ class SEMTest {
 	
 	private SEM sem;
 	private ZonaDeEstacionamientoMedido zona;
-	private PuntoDeVenta pdv;
 	private Compra compra;
 	private Estacionamiento estacionamiento;
 	private Infraccion infraccion;
@@ -39,7 +37,6 @@ class SEMTest {
 		sem = new SEM(LocalTime.of(07, 00), LocalTime.of(20, 00), 40);
 		inspector = mock(Inspector.class);
 		zona = mock(ZonaDeEstacionamientoMedido.class);
-		pdv = mock(PuntoDeVenta.class);
 		compra = mock(Compra.class);
 		estacionamientoApp = mock(EstacionamientoApp.class);
 		estacionamiento = mock(Estacionamiento.class);
