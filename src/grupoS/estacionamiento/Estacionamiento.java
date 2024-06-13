@@ -20,7 +20,7 @@ public abstract class Estacionamiento {
 		}
 
 		public  boolean estaVigente() {
-			return this.horaDeFin.isBefore(LocalTime.now());
+			return this.horaDeFin.isAfter(LocalTime.now());
 		}
 		
 		public LocalTime getHoraDeInicio() {
