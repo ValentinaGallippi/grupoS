@@ -27,5 +27,6 @@ public class AppInspector {
         	this.sem.registrarInfraccion(infraccion);
         }
     }
-
+    
+    
 }

@@ -14,7 +14,6 @@ import grupoS.estado.Walking;
 import grupoS.modoDeAppConductor.ModoDeAppConductor;
 import grupoS.modoDeAppConductor.ModoManual;
 
-
 public class AppConductor implements MovementSensor {
 	
 	private SEM sem;
@@ -32,7 +31,6 @@ public class AppConductor implements MovementSensor {
     	this.estado = new Walking();//
     }
 
- // usamos el strategy
     public void iniciarEstacionamiento(String patente) {
     	this.setPatente(patente);
     	this.modoDeApp.iniciarEstacionamiento(this, patente);
@@ -42,8 +40,6 @@ public class AppConductor implements MovementSensor {
     	this.modoDeApp.finalizarEstacionamiento(this);
     }
     
-  
-    
     public double consultarSaldo() {
     	return this.sem.saldoDe(this.celular);
     }
@@ -51,8 +47,6 @@ public class AppConductor implements MovementSensor {
     public void registrarEstacionamiento(Estacionamiento estacionamiento) {
     	this.sem.registrarEstacionamiento(estacionamiento);
     }
-
-   
 
 	public SEM getSem() {
 		return sem;
@@ -100,8 +94,6 @@ public class AppConductor implements MovementSensor {
 	public double precioPorHora() {
 		return this.sem.getPrecioPorHora();
 	}
-
-
 	
 	@Override
 	public void walking(){
@@ -112,7 +104,6 @@ public class AppConductor implements MovementSensor {
 	public void driving(){
 		this.estado.manejando(this);
 	}
-	
 	
 	public void cambiarAsistencia(Asistencia asistencia){
 		this.modoDeApp.cambiarAsistencia(asistencia, this);
